@@ -58,5 +58,5 @@ export const useChipStyles = createUseStyles(
   }),
   {
     name: 'Chip',
-  },
+  }
 );

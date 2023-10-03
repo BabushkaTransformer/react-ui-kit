@@ -20,7 +20,8 @@ export const createTheme = (opts: IAppThemeOptions): IAppTheme => ({
   breakpoints: {
     down: (key): string => `@media screen and (max-width: ${opts.breakpoints[key]}px)`,
     up: (key): string => `@media screen and (min-width: ${opts.breakpoints[key]}px)`,
-    between: (from, to): string => `@media screen and (min-width: ${opts.breakpoints[from]}px) and (max-width: ${opts.breakpoints[to]}px)`,
+    between: (from, to): string =>
+      `@media screen and (min-width: ${opts.breakpoints[from]}px) and (max-width: ${opts.breakpoints[to]}px)`,
     only: (key): string => {
       const currentValue = opts.breakpoints[key];
       const { value } = getNextBreakpoint(opts, key);
