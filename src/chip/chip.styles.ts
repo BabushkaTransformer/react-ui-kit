@@ -1,9 +1,8 @@
 import { createUseStyles } from 'react-jss';
-import { IChipProps } from './chip.models.ts';
+import { IChipProps } from './chip.models';
 
 const defaultTextColor = 'rgba(0, 0, 0, 0.87)';
 const defaultBackgroundColor = 'rgba(0, 0, 0, 0.08)';
-
 
 export const useChipStyles = createUseStyles(
   (theme) => ({
@@ -22,14 +21,14 @@ export const useChipStyles = createUseStyles(
     },
 
     filled: (props: IChipProps) => ({
-      color:  props.color ? theme.palette[props.color].contrastText : defaultTextColor,
-      background:  props.color ? theme.palette[props.color].main : defaultBackgroundColor,
+      color: props.color ? theme.palette[props.color].contrastText : defaultTextColor,
+      background: props.color ? theme.palette[props.color].main : defaultBackgroundColor,
     }),
 
     outlined: (props: IChipProps) => ({
-      color:  props.color ? theme.palette[props.color].main : defaultTextColor,
-      borderColor:  props.color ? theme.palette[props.color].main : defaultBackgroundColor,
-      border: '1px solid'
+      color: props.color ? theme.palette[props.color].main : defaultTextColor,
+      borderColor: props.color ? theme.palette[props.color].main : defaultBackgroundColor,
+      border: '1px solid',
     }),
 
     rounded: {

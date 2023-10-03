@@ -1,6 +1,6 @@
 import { IAppBreakpointKey, IAppTheme, IAppThemeOptions } from './types';
 
-const getKeys = Object.keys as <T extends object>(obj: T) => Array<keyof T>
+const getKeys = Object.keys as <T extends object>(obj: T) => Array<keyof T>;
 
 const getNextBreakpoint = (opts: IAppThemeOptions, key: IAppBreakpointKey) => {
   const keys = getKeys(opts.breakpoints);
@@ -12,8 +12,8 @@ const getNextBreakpoint = (opts: IAppThemeOptions, key: IAppBreakpointKey) => {
   return {
     key: nextKey,
     value: nextValue,
-  }
-}
+  };
+};
 
 export const createTheme = (opts: IAppThemeOptions): IAppTheme => ({
   ...opts,
@@ -27,9 +27,8 @@ export const createTheme = (opts: IAppThemeOptions): IAppTheme => ({
 
       if (value === null) {
         return `@media screen and (min-width: ${currentValue}px)`;
-      } else {
-        return `@media screen and (min-width: ${currentValue}px) and (max-width: ${value - 1}px)`;
       }
+      return `@media screen and (min-width: ${currentValue}px) and (max-width: ${value - 1}px)`;
     },
     not: (key): string => {
       const currentValue = opts.breakpoints[key];
@@ -37,9 +36,8 @@ export const createTheme = (opts: IAppThemeOptions): IAppTheme => ({
 
       if (value === null) {
         return `@media screen and (max-width: ${currentValue - 1}px)`;
-      } else {
-        return `@media screen and (max-width: ${currentValue - 1}px), screen and (min-width: ${value}px)`;
       }
+      return `@media screen and (max-width: ${currentValue - 1}px), screen and (min-width: ${value}px)`;
     },
     values: Object.values(opts.breakpoints).sort((a, b): number => (a > b ? 1 : -1)),
     keys: getKeys(opts.breakpoints),

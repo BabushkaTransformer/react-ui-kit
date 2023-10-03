@@ -1,8 +1,9 @@
-import { createElement, FC, forwardRef, ReactElement } from 'react';
+import {
+  createElement, FC, forwardRef, ReactElement,
+} from 'react';
 import cn from 'classnames';
 import { IChipProps } from './chip.models';
-import { useChipStyles } from './chip.styles.ts';
-
+import { useChipStyles } from './chip.styles';
 
 export const Chip: FC<IChipProps> = forwardRef<ReactElement, IChipProps>((chipProps, ref) => {
   const {
@@ -30,16 +31,18 @@ export const Chip: FC<IChipProps> = forwardRef<ReactElement, IChipProps>((chipPr
     className,
   );
 
-  return createElement(component, {
-    className: rootCN,
-    ref,
-    ...other,
-    children: children || (
+  return createElement(
+    component,
+    {
+      className: rootCN,
+      ref,
+      ...other,
+    }, (
       <>
         {startIcon && <div className={classes.icon}>{startIcon}</div>}
-        {label}
+        {children || label}
         {endIcon && <div className={classes.icon}>{endIcon}</div>}
       </>
     ),
-  });
+  );
 });

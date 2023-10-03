@@ -1,5 +1,7 @@
-import { HTMLAttributes, ReactElement, ReactNode, ElementType } from 'react';
-import { IAppPaletteVariants } from '../theme/types.ts';
+import {
+  HTMLAttributes, ReactElement, ReactNode, ElementType,
+} from 'react';
+import { IAppPaletteVariants } from '../theme/types';
 
 export type ChipVariant = 'filled' | 'outlined';
 

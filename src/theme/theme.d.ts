@@ -1,4 +1,4 @@
-import { IAppTheme } from './types.ts';
+import { IAppTheme } from './types';
 
 declare global {
   namespace Jss {

@@ -1,5 +1,5 @@
+import { Chip } from './chip.view';
 import type { Meta, StoryObj } from '@storybook/react';
-import { Chip } from './chip.view.tsx';
 
 const meta: Meta<typeof Chip> = {
   title: 'Example/Chip',
@@ -11,17 +11,17 @@ const meta: Meta<typeof Chip> = {
   },
   argTypes: {
     component: {
-      table: { disable: true }
+      table: { disable: true },
     },
     endIcon: {
-      table: { disable: true }
+      table: { disable: true },
     },
     startIcon: {
-      table: { disable: true }
+      table: { disable: true },
     },
     size: {
       options: ['default', 'small'],
-      control: { type: 'radio' }
+      control: { type: 'radio' },
     },
     label: {
       description: 'Label of chip',
@@ -32,35 +32,34 @@ const meta: Meta<typeof Chip> = {
   },
 };
 
-
 export default meta;
 type Story = StoryObj<typeof Chip>;
 
 export const Standard: Story = {
   args: {
     label: 'Standard',
-  }
-}
+  },
+};
 
 export const Outlined: Story = {
   args: {
     label: 'Outlined',
     variant: 'outlined',
-  }
-}
+  },
+};
 
 export const Rounded: Story = {
   args: {
     label: 'Rounded',
     color: 'warning',
-    rounded: true
-  }
-}
+    rounded: true,
+  },
+};
 
 export const Small: Story = {
   args: {
     label: 'Small',
     color: 'info',
-    size: 'small'
-  }
-}
+    size: 'small',
+  },
+};

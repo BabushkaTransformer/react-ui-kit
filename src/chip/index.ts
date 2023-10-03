@@ -1,2 +1,2 @@
-export * from './chip.models.ts';
-export * from './chip.view.tsx';
+export * from './chip.models';
+export * from './chip.view';
