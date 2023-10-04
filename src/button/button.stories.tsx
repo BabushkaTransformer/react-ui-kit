@@ -1,9 +1,9 @@
-import { Chip } from './chip.view';
+import { Button } from './button.view';
 import type { Meta, StoryObj } from '@storybook/react';
 
-const meta: Meta<typeof Chip> = {
-  title: 'Example/Chip',
-  component: Chip,
+const meta: Meta<typeof Button> = {
+  title: 'Example/Button',
+  component: Button,
   parameters: {
     controls: {
       sort: 'alpha',
@@ -20,47 +20,39 @@ const meta: Meta<typeof Chip> = {
       control: false,
     },
     size: {
-      options: ['default', 'small'],
+      options: ['none', 'small', 'medium', 'large'],
       control: { type: 'radio' },
-    },
-    label: {
-      description: 'Label of chip',
     },
     color: {
       description: 'Color of chip',
+    },
+    disabled: {
+      type: 'boolean',
     },
   },
   tags: ['autodocs'],
 };
 
 export default meta;
-type Story = StoryObj<typeof Chip>;
+type Story = StoryObj<typeof Button>;
 
 export const Standard: Story = {
   args: {
-    label: 'Standard',
+    children: 'Standard',
   },
 };
 
 export const Outlined: Story = {
   args: {
-    label: 'Outlined',
     variant: 'outlined',
-  },
-};
-
-export const Rounded: Story = {
-  args: {
-    label: 'Rounded',
-    color: 'warning',
-    rounded: true,
+    children: 'Outlined',
   },
 };
 
 export const Small: Story = {
   args: {
-    label: 'Small',
     color: 'info',
+    children: 'Small',
     size: 'small',
   },
 };
