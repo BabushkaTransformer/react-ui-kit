@@ -1,5 +1,5 @@
 import { fireEvent, screen } from '@testing-library/react';
-import { renderWithTheme } from '../test/renderWithTheme';
+import { renderWithTheme } from '../utils/test/renderWithTheme';
 import { IButtonProps } from './button.models';
 import { Button } from './button.view';
 

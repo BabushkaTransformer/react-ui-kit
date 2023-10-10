@@ -1,6 +1,6 @@
 import { screen, fireEvent } from '@testing-library/react';
 import '@testing-library/jest-dom';
-import { renderWithTheme } from '../test/renderWithTheme';
+import { renderWithTheme } from '../utils/test/renderWithTheme';
 import { Input } from './input.view';
 
 describe('Input component', () => {

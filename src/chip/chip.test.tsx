@@ -1,6 +1,6 @@
 import { screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
-import { renderWithTheme } from '../test/renderWithTheme';
+import { renderWithTheme } from '../utils/test/renderWithTheme';
 import { Chip } from './chip.view';
 
 describe('Chip component', () => {
