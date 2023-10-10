@@ -99,7 +99,14 @@ const appThemeOptions: IAppThemeOptions = {
       fontSize: '14px',
       lineHeight: '16px',
     },
-    link: {},
+    inherit: {
+      fontSize: 'inherit',
+      lineHeight: 'inherit',
+    },
+    link: {
+      color: '#0071CE',
+      textDecoration: 'underline',
+    },
   },
   spacing: 8,
   shape: { borderRadius: 4 },

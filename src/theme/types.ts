@@ -72,7 +72,7 @@ export type IAppTypography = {
   fontFamilyIBM: string;
   fontFamilyMontserrat: string;
 } & {
-  [k in Exclude<TypographyVariants, 'inherit'>]: CSSProperties;
+  [k in TypographyVariants]: CSSProperties;
 };
 
 export type IAppTransitions = {
