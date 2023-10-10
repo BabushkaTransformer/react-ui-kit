@@ -1,4 +1,4 @@
-import React, { ButtonHTMLAttributes } from 'react';
+import { ButtonHTMLAttributes, ElementType, ReactElement } from 'react';
 import { IAppPaletteVariants } from '../theme/types';
 
 export type ButtonVariant = 'text' | 'contained' | 'outlined';
@@ -8,9 +8,9 @@ export interface IButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   color?: IAppPaletteVariants;
   variant?: ButtonVariant;
   size?: ButtonSize;
-  startIcon?: React.ReactNode;
-  endIcon?: React.ReactNode;
-  component?: React.ElementType;
+  startIcon?: ReactElement;
+  endIcon?: ReactElement;
+  component?: ElementType;
   fullWidth?: boolean;
   loading?: boolean;
 }
