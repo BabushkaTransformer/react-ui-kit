@@ -1,14 +1,8 @@
 import { FC } from 'react';
 import { SvgIcon, SvgIconProps } from '../svg-icon';
 
-export const CheckboxCheckIcon: FC<SvgIconProps> = ({ style = {}, ...props }) => (
-  <SvgIcon
-    viewBox="0 0 12 8"
-    fill="currentColor"
-    xmlns="http://www.w3.org/2000/svg"
-    style={{ padding: 3, ...style }}
-    {...props}
-  >
+export const CheckboxCheckIcon: FC<SvgIconProps> = (props) => (
+  <SvgIcon viewBox="0 0 12 8" fill="currentColor" xmlns="http://www.w3.org/2000/svg" {...props}>
     <path d="M0.258706 3.78602C-0.0862352 3.44161 -0.0862352 2.8832 0.258706 2.53879C0.603646 2.19438 1.16291 2.19438 1.50785 2.53879L4.85724 5.88459C4.9137 5.94096 4.97801 6.01939 5.04459 6.11268C5.32106 6.50006 5.63655 7.14344 5.5902 7.52549C5.57952 7.61356 5.54961 7.68773 5.49557 7.74169C5.15063 8.0861 4.59137 8.0861 4.24643 7.74169L0.258706 3.78602Z" />
     <path d="M10.4921 0.258309C10.8371 -0.0861036 11.3963 -0.086103 11.7413 0.25831C12.0862 0.602723 12.0862 1.16113 11.7413 1.50554L5.49557 7.74169C5.15063 8.0861 4.59137 8.0861 4.24643 7.74169C3.90149 7.39728 4.5123 6.229 4.85724 5.88459L10.4921 0.258309Z" />
   </SvgIcon>
