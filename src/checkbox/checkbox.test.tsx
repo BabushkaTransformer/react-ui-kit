@@ -1,22 +1,15 @@
-import { useState } from 'react';
 import { screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { renderWithTheme } from '../utils/test/renderWithTheme';
-import { CheckboxProps } from './checkbox.models';
 import { Checkbox } from './checkbox.view';
 import '@testing-library/jest-dom';
-
-const CheckboxController = (props: CheckboxProps) => {
-  const [checked, setChecked] = useState(false);
-  return <Checkbox checked={checked} onChange={(e) => setChecked(e.target.checked)} {...props} />;
-};
 
 describe('Checkbox', () => {
   it('displays text and icon', () => {
     renderWithTheme(
-      <CheckboxController checked checkIcon={<div data-testid="check-icon">✓</div>}>
+      <Checkbox defaultChecked checkIcon={<div data-testid="check-icon">✓</div>}>
         Checkbox Label
-      </CheckboxController>
+      </Checkbox>
     );
 
     const label = screen.getByText('Checkbox Label');
@@ -28,7 +21,7 @@ describe('Checkbox', () => {
 
   it('can be disabled', async () => {
     const onChange = jest.fn();
-    renderWithTheme(<CheckboxController onChange={onChange} disabled />);
+    renderWithTheme(<Checkbox onChange={onChange} disabled />);
 
     const checkbox = screen.getByRole('checkbox');
     await userEvent.click(checkbox);
@@ -39,7 +32,7 @@ describe('Checkbox', () => {
 
   it('calls a handler on click', async () => {
     const onChange = jest.fn();
-    renderWithTheme(<input type="checkbox" onChange={onChange} />);
+    renderWithTheme(<Checkbox onChange={onChange} />);
 
     const checkbox = screen.getByRole('checkbox');
     await userEvent.click(checkbox);
@@ -54,7 +47,7 @@ describe('Checkbox', () => {
   });
 
   it('can be selected', () => {
-    renderWithTheme(<CheckboxController checked>Checkbox Label</CheckboxController>);
+    renderWithTheme(<Checkbox defaultChecked>Checkbox Label</Checkbox>);
     const checkbox = screen.getByRole('checkbox');
 
     expect(checkbox).toBeChecked();

@@ -1,7 +1,7 @@
 import React from 'react';
 import cn from 'classnames';
 import { CheckboxCheckIcon } from '../icons/checkbox-check';
-import { Typography } from '../typography/typography.view';
+import { Typography } from '../typography';
 import { CheckboxProps } from './checkbox.models';
 import { useCheckboxStyles } from './checkbox.styles';
 

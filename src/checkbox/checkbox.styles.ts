@@ -44,9 +44,10 @@ export const useCheckboxStyles = createUseStyles(
 
     preview: {
       display: 'inline-block',
+      boxSizing: 'border-box',
       position: 'relative',
-      width: 14,
-      height: 14,
+      width: 16,
+      height: 16,
       border: 'solid #E4E7F2 1px',
       borderRadius: 2,
       flexShrink: 0,
