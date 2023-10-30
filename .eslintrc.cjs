@@ -29,6 +29,7 @@ module.exports = {
     'react/jsx-props-no-spreading': 'off',
     'react/display-name': 'off',
     'react/react-in-jsx-scope': 'off',
+    'react/no-array-index-key': 'off',
     'react/function-component-definition': 'off',
     'react/jsx-uses-react': 'off',
     'import/no-anonymous-default-export': 'off',
