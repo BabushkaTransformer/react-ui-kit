@@ -12,6 +12,7 @@
     "test": "jest"
   },
   "dependencies": {
+    "@floating-ui/react-dom": "^2.0.2",
     "classname": "^0.0.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
