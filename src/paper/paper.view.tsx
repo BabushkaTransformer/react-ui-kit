@@ -1,9 +1,9 @@
-import { createElement, FC, forwardRef, PropsWithRef } from 'react';
+import { createElement, forwardRef } from 'react';
 import cn from 'classnames';
 import { PaperProps } from './paper.models';
 import { usePaperStyles } from './paper.styles';
 
-export const Paper: FC<PropsWithRef<PaperProps>> = forwardRef((paperProps, ref) => {
+export const Paper = forwardRef<HTMLElement, PaperProps>((paperProps, ref) => {
   const { className, component = 'div', elevation, variant, ...other } = paperProps;
 
   const classes = usePaperStyles({ elevation });

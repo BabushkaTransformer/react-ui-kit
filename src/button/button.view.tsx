@@ -1,9 +1,9 @@
-import { createElement, forwardRef, ReactElement } from 'react';
+import { createElement, forwardRef } from 'react';
 import cn from 'classnames';
 import { IButtonProps } from './button.models';
 import { useButtonStyles } from './button.styles';
 
-export const Button = forwardRef<ReactElement, IButtonProps>((props, ref) => {
+export const Button = forwardRef<HTMLButtonElement, IButtonProps>((props, ref) => {
   const {
     variant = 'contained',
     size = 'medium',
