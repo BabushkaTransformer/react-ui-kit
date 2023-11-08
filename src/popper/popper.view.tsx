@@ -1,14 +1,15 @@
-import { FC, useEffect, useLayoutEffect, useMemo, useRef } from 'react';
+import { forwardRef, useEffect, useLayoutEffect, useMemo, useRef } from 'react';
 import { createPortal } from 'react-dom';
 import { autoPlacement, flip, Middleware, offset, shift, size, useFloating, hide } from '@floating-ui/react-dom';
+import { useMergeRefs } from '../utils/hooks/use-merge-refs';
 import { PopperProps } from './popper.models';
 import { convertFloatingDataToReactCSSProperties, getAutoPlacementAlign, isAuto } from './popper.utils';
 
-export const Popper: FC<PopperProps> = (props) => {
+export const Popper = forwardRef<HTMLDivElement, PopperProps>((props, ref) => {
   const {
     targetRef,
     children,
-    placement: placementProp = 'left',
+    placement: placementProp = 'bottom',
     sameWidth,
     offsetDistance = 8,
     offsetSkidding = 0,
@@ -84,10 +85,12 @@ export const Popper: FC<PopperProps> = (props) => {
     }
   }, [onPlacementChange, resolvedPlacement]);
 
+  const floatingMergedRef = useMergeRefs(floatingRef, ref);
+
   const dropdown = (
     <div
       {...restProps}
-      ref={floatingRef}
+      ref={floatingMergedRef}
       style={{
         ...styleProp,
         ...convertFloatingDataToReactCSSProperties(
@@ -106,4 +109,4 @@ export const Popper: FC<PopperProps> = (props) => {
   );
 
   return createPortal(dropdown, portalRoot);
-};
+});
