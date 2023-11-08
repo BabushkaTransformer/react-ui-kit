@@ -31,6 +31,8 @@ const PopoverTemplate = () => {
     <Stack spacing={40}>
       <Popover
         placement="top-end"
+        shown={open}
+        onShownChange={setOpen}
         content={
           <Paper style={{ padding: 20 }}>
             <Typography variant="subtitle1">Тут текст</Typography>
@@ -50,9 +52,7 @@ const PopoverTemplate = () => {
 
       <Popover
         action="hover"
-        shown={open}
         placement="right-end"
-        onShownChange={setOpen}
         content={
           <Paper style={{ padding: 10 }}>
             <Typography variant="subtitle1">При ховере</Typography>

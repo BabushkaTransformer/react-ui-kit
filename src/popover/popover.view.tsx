@@ -1,17 +1,20 @@
-import { cloneElement, FC, isValidElement, ReactElement, useRef, useState } from 'react';
+import { cloneElement, forwardRef, isValidElement, ReactElement, useRef, useState } from 'react';
 import { Popper } from '../popper';
 import { useEventListener } from '../utils/hooks/use-event-listener';
+import { useMergeRefs } from '../utils/hooks/use-merge-refs';
 import { PopoverProps } from './popover.models';
 
-export const Popover: FC<PopoverProps> = ({
-  shown: shownProp,
-  action = 'click',
-  offsetDistance = 8,
-  content,
-  children,
-  onShownChange,
-  ...restProps
-}) => {
+export const Popover = forwardRef<HTMLDivElement, PopoverProps>((props, ref) => {
+  const {
+    shown: shownProp,
+    action = 'click',
+    offsetDistance = 8,
+    content,
+    children,
+    onShownChange,
+    ...restProps
+  } = props;
+
   const [computedShown, setComputedShown] = useState(shownProp || false);
 
   const shown = typeof shownProp === 'boolean' ? shownProp : computedShown;
@@ -59,6 +62,8 @@ export const Popover: FC<PopoverProps> = ({
   useEventListener('mouseenter', handleTargetEnter, childRef, { shouldDetachEvent: !hoverable });
   useEventListener('mouseleave', handleTargetLeave, childRef, { shouldDetachEvent: !hoverable });
 
+  const mergedPopperRef = useMergeRefs(popperRef, ref);
+
   return (
     <>
       {isValidElement(children) &&
@@ -70,11 +75,11 @@ export const Popover: FC<PopoverProps> = ({
           {...restProps}
           role="dialog"
           targetRef={childRef}
-          ref={popperRef}
+          ref={mergedPopperRef}
           offsetDistance={offsetDistance}
           renderContent={() => content}
         />
       )}
     </>
   );
-};
+});
