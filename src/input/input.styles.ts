@@ -11,6 +11,8 @@ export const useInputStyles = createUseStyles(
 
     input: {
       zIndex: 0,
+      width: '100%',
+      boxSizing: 'border-box',
       borderWidth: '1px',
       borderRadius: '0.25rem',
       borderStyle: 'solid',
@@ -95,13 +97,6 @@ export const useInputStyles = createUseStyles(
         cursor: 'default',
         backgroundColor: theme.palette.action.disabledBackground,
         borderColor: theme.palette.action.disabledBackground,
-        color: theme.palette.action.disabled,
-      },
-
-      '& $label': {
-        color: theme.palette.action.disabled,
-      },
-      '& $helperText': {
         color: theme.palette.action.disabled,
       },
     }),

@@ -11,7 +11,6 @@ export const assignRef = <T = unknown>(ref: ReactRef<T> | null | undefined, valu
   }
 
   try {
-    // eslint-disable-next-line no-param-reassign
     ref.current = value;
   } catch (error) {
     throw new Error(`Cannot assign value '${value}' to ref '${ref}'`);

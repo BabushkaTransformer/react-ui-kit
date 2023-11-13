@@ -32,6 +32,8 @@ module.exports = {
     'react/no-array-index-key': 'off',
     'react/function-component-definition': 'off',
     'react/jsx-uses-react': 'off',
+    '@typescript-eslint/default-param-last': 'off',
+    'no-param-reassign': 'off',
     'consistent-return': 'off',
     'import/no-anonymous-default-export': 'off',
     'import/no-default-export': 'off',

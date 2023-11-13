@@ -9,6 +9,7 @@ export const useTypographyStyles = createUseStyles(
       fontWeight = theme.typography.fontWeightLight,
     }: TypographyProps) => ({
       fontWeight,
+      margin: 0,
       fontFamily: theme.typography.fontFamily,
       color: theme.palette.text[color],
       ...theme.typography[variant],

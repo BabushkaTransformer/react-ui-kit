@@ -19,8 +19,10 @@ export const Input = forwardRef<HTMLInputElement, IInputProps>((props, ref) => {
     size = 'medium',
     min,
     max,
-    ...other
+    ...rest
   } = props;
+
+  const { className: inputClassName, ...inputPropsRest } = inputProps;
 
   const classes = useInputStyles(props);
 
@@ -28,14 +30,14 @@ export const Input = forwardRef<HTMLInputElement, IInputProps>((props, ref) => {
     [classes.disabled]: disabled,
   });
 
-  const inputCN = cn(classes.input, classes[size], {
+  const inputCN = cn(inputClassName, classes.input, classes[size], {
     [classes.fullWidth]: fullWidth,
     [classes.withStartAdornment]: !!startAdornment,
     [classes.withEndAdornment]: !!endAdornment,
   });
 
   return (
-    <div className={rootCN} {...other}>
+    <div className={rootCN} {...rest}>
       {startAdornment && <div className={classes.startAdornment}>{startAdornment}</div>}
       <input
         ref={ref}
@@ -48,7 +50,7 @@ export const Input = forwardRef<HTMLInputElement, IInputProps>((props, ref) => {
         required={required}
         min={min}
         max={max}
-        {...inputProps}
+        {...inputPropsRest}
       />
       {endAdornment && <div className={classes.endAdornment}>{endAdornment}</div>}
     </div>
