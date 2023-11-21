@@ -7,9 +7,15 @@ export const useSelectStyles = createUseStyles(
       cursor: 'pointer',
       width: '100%',
       position: 'relative',
-      border: '1px solid',
+      border: '1px solid #E4E7F2',
       borderRadius: theme.shape.borderRadius,
-      borderColor: theme.palette.primary.main,
+      outline: '2px solid transparent',
+      transition: 'border-color 0.2s',
+
+      '&:focus-within': {
+        borderColor: 'rgb(49, 130, 206);',
+        boxShadow: 'rgb(49, 130, 206) 0px 0px 0px 1px;',
+      },
     },
     select: {
       padding: '8px 16px',
@@ -17,6 +23,11 @@ export const useSelectStyles = createUseStyles(
     input: {
       border: 'none',
       outline: 'none',
+
+      '&:focus-visible': {
+        borderColor: 'none',
+        boxShadow: 'none',
+      },
     },
     hidden: {
       position: 'absolute',

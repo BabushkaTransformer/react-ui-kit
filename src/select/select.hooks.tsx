@@ -2,6 +2,21 @@ import { useCallback, useRef, useState } from 'react';
 import { SelectOption } from './select.models';
 import { findIndexAfter, findIndexBefore } from './select.utils';
 
+/**
+ * Хук `useSelectPointer` предоставляет функциональность управления фокусировкой опций в выпадающем списке(через клавиатуру).
+ * Используется в компоненте Select для управления фокусировкой и прокруткой списка опций.
+ *
+ * @param {SelectOption[]} options - Массив опций выпадающего списка.
+ * @returns {{
+ *   scrollBoxRef: React.MutableRefObject<HTMLDivElement | null>,
+ *   resetFocusedOption: () => void,
+ *   focusOptionByIndex: (index: number | undefined, scrollTo?: boolean) => void,
+ *   scrollToElement: (index: number) => void,
+ *   focusedOptionIndex: number,
+ *   focusNextOption: () => void,
+ *   focusPrevOption: () => void,
+ * }}
+ */
 export const useSelectPointer = (options: SelectOption[]) => {
   const [focusedOptionIndex, setFocusedOptionIndex] = useState(-1);
   const scrollBoxRef = useRef<HTMLDivElement>(null);
@@ -42,7 +57,6 @@ export const useSelectPointer = (options: SelectOption[]) => {
       if (index === undefined || index < 0 || index > (options.length ?? 0) - 1) {
         return;
       }
-
       const option = options[index];
 
       if (option?.disabled) {
@@ -53,7 +67,6 @@ export const useSelectPointer = (options: SelectOption[]) => {
         scrollToElement(index);
       }
 
-      // Это оптимизация, прежде всего, под `onMouseOver`
       setFocusedOptionIndex((prev) => (prev !== index ? index : prev));
     },
     [options, scrollToElement]
@@ -64,16 +77,14 @@ export const useSelectPointer = (options: SelectOption[]) => {
   }, []);
 
   const focusNextOption = useCallback(() => {
-    let index = focusedOptionIndex;
-    const nextIndex = findIndexAfter(options, index);
-    index = nextIndex === -1 ? findIndexAfter(options) : nextIndex;
+    const nextIndex = findIndexAfter(options, focusedOptionIndex);
+    const index = nextIndex === -1 ? findIndexAfter(options) : nextIndex;
     focusOptionByIndex(index);
   }, [focusOptionByIndex, focusedOptionIndex, options]);
 
   const focusPrevOption = useCallback(() => {
-    let index = focusedOptionIndex;
-    const nextIndex = findIndexBefore(options, index);
-    index = nextIndex === -1 ? findIndexBefore(options) : nextIndex;
+    const nextIndex = findIndexBefore(options, focusedOptionIndex);
+    const index = nextIndex === -1 ? findIndexBefore(options) : nextIndex;
     focusOptionByIndex(index);
   }, [focusOptionByIndex, focusedOptionIndex, options]);
 

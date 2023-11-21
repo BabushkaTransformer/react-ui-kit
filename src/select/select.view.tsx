@@ -65,11 +65,19 @@ export const Select = <OptionInterfaceT extends SelectOption>(props: SelectProps
   const { scrollBoxRef, focusOptionByIndex, focusNextOption, focusPrevOption, focusedOptionIndex, resetFocusedOption } =
     useSelectPointer(options);
 
-  const areOptionsShown = scrollBoxRef.current !== null;
-
   useEffect(() => {
     setLocalValue((prev) => value ?? prev);
   }, [value]);
+
+  useEffect(() => {
+    if (opened) {
+      const index = options.findIndex((option) => option.value === localValue?.value);
+
+      if (index !== -1) {
+        focusOptionByIndex(index);
+      }
+    }
+  }, [focusOptionByIndex, localValue, opened, options]);
 
   const open = () => {
     setOpened(true);
@@ -97,7 +105,7 @@ export const Select = <OptionInterfaceT extends SelectOption>(props: SelectProps
     close();
   };
 
-  const onLabelClick = (e: ReactMouseEvent<HTMLDivElement>) => {
+  const onSelectClick = (e: ReactMouseEvent<HTMLDivElement>) => {
     if (scrollBoxRef.current?.contains(e.target as Node)) {
       e.preventDefault();
     }
@@ -136,7 +144,7 @@ export const Select = <OptionInterfaceT extends SelectOption>(props: SelectProps
 
   const handleClickOutside = (event: MouseEvent) => {
     if (
-      !opened &&
+      opened &&
       !containerRef.current?.contains(event.target as Node) &&
       !scrollBoxRef.current?.contains(event.target as Node)
     ) {
@@ -144,7 +152,11 @@ export const Select = <OptionInterfaceT extends SelectOption>(props: SelectProps
     }
   };
 
+  /**
+   * Обработчик события нажатия клавиши клавиатуры.
+   */
   const handleKeyDownSelect = (event: KeyboardEvent<HTMLDivElement>) => {
+    const areOptionsShown = scrollBoxRef.current !== null;
     if (['ArrowUp', 'ArrowDown', 'Escape', 'Enter'].includes(event.key) && areOptionsShown) event.preventDefault();
 
     switch (event.key) {
@@ -177,6 +189,10 @@ export const Select = <OptionInterfaceT extends SelectOption>(props: SelectProps
     }
   };
 
+  useEventListener('click', handleClickOutside, undefined, { capture: true });
+
+  const rootCN = cn(styles.root, className);
+
   const renderOption = (option: OptionInterfaceT, index: number) => {
     const hover = index === focusedOptionIndex;
     const select = option.value === localValue?.value;
@@ -207,14 +223,10 @@ export const Select = <OptionInterfaceT extends SelectOption>(props: SelectProps
     return defaultDropdownContent;
   };
 
-  const rootCN = cn(styles.root, className);
-
-  useEventListener('click', handleClickOutside);
-
   return (
     <div
       ref={containerRef}
-      onClick={onLabelClick}
+      onClick={onSelectClick}
       onKeyDown={handleKeyDownSelect}
       className={rootCN}
       role="listbox"

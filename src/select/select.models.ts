@@ -63,7 +63,13 @@ export type SelectProps<OptionInterfaceT extends SelectOption> = Omit<
    * "победит" `renderDropdown`.
    */
   fetching?: boolean;
+  /**
+   * Функция срабатывающая при закрытии селекта
+   */
   onClose?: VoidFunction;
+  /**
+   * Функция срабатывающая при открытии селекта
+   */
   onOpen?: VoidFunction;
   /**
    * Иконка раскрывающегося списка
@@ -73,7 +79,13 @@ export type SelectProps<OptionInterfaceT extends SelectOption> = Omit<
    * Если `true`, то справа будет отображаться кнопка для очистки значения
    */
   allowClearButton?: boolean;
+  /**
+   * Отступ между селектом и дропдауном
+   */
   dropdownOffsetDistance?: number;
+  /**
+   * Если `true`, то ширина дропдауна будет равна к длине самого селекта. Пл умолчанию `true`
+   */
   fixDropdownWidth?: boolean;
 };
 
